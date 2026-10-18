@@ -11,54 +11,56 @@
    ============================================================ */
 :root {
   /* Color Palette */
-  --color-bg-primary:       #F8F5F0;
-  --color-bg-secondary:     #EDE3D5;
-  --color-bg-card:          #FFFDF9;
-  --color-text-primary:     #3B2A21;
-  --color-text-secondary:   #8B7765;
-  --color-accent:           #A67C52;
+  --color-bg-primary: #F8F5F0;
+  --color-bg-secondary: #EDE3D5;
+  --color-bg-card: #FFFDF9;
+  --color-text-primary: #3B2A21;
+  --color-text-secondary: #8B7765;
+  --color-accent: #A67C52;
   --color-accent-secondary: #D6C2A8;
-  --color-border:           #E5D8C8;
-  --color-hover:            #5A3E2B;
-  --color-white:            #FFFFFF;
+  --color-border: #E5D8C8;
+  --color-hover: #5A3E2B;
+  --color-white: #FFFFFF;
 
   /* Typography */
   --font-display: 'Playfair Display', 'Georgia', serif;
-  --font-body:    'DM Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Spacing */
-  --space-xs:  0.375rem;
-  --space-sm:  0.75rem;
-  --space-md:  1.25rem;
-  --space-lg:  2rem;
-  --space-xl:  3rem;
+  --space-xs: 0.375rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
   --space-2xl: 4.5rem;
 
   /* Border Radius */
-  --radius-sm:   6px;
-  --radius-md:   12px;
-  --radius-lg:   20px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
   --radius-full: 9999px;
 
   /* Transitions */
-  --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 280ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow:   420ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 420ms cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Shadows */
-  --shadow-card:       0 2px 16px rgba(59, 42, 33, 0.06);
+  --shadow-card: 0 2px 16px rgba(59, 42, 33, 0.06);
   --shadow-card-hover: 0 8px 32px rgba(59, 42, 33, 0.12);
-  --shadow-emblem:     0 4px 20px rgba(59, 42, 33, 0.08);
+  --shadow-emblem: 0 4px 20px rgba(59, 42, 33, 0.08);
 
   /* Max widths */
   --max-content: 520px;
-  --max-wide:    680px;
+  --max-wide: 680px;
 }
 
 /* ============================================================
    RESET & BASE
    ============================================================ */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -189,6 +191,7 @@ body::after {
   border-color: var(--color-accent-secondary);
   transform: rotate(45deg);
 }
+
 .brand-header:hover .brand-emblem__ring--inner {
   transform: rotate(-45deg) scale(0.95);
 }
@@ -314,12 +317,10 @@ body::after {
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(
-    105deg,
-    transparent 40%,
-    rgba(255, 253, 249, 0.5) 50%,
-    transparent 60%
-  );
+  background: linear-gradient(105deg,
+      transparent 40%,
+      rgba(255, 253, 249, 0.5) 50%,
+      transparent 60%);
   transition: left 0.55s ease;
   pointer-events: none;
 }
@@ -517,6 +518,7 @@ body::after {
     opacity: 0;
     transform: translateY(24px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -524,19 +526,30 @@ body::after {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* Staggered social cards via nth-child */
 .social-links .social-card:nth-child(1) {
   animation-delay: 0.45s;
 }
+
 .social-links .social-card:nth-child(2) {
   animation-delay: 0.58s;
 }
+
 .social-links .social-card:nth-child(3) {
   animation-delay: 0.71s;
+}
+
+.social-links .social-card:nth-child(4) {
+  animation-delay: 0.84s;
 }
 
 /* Each card individually animated */
@@ -546,10 +559,26 @@ body::after {
   animation: fadeSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+/* ── WhatsApp icon: subtle sage-green tint ──────────────────────────────────
+   Uses a muted, desaturated green that complements the warm beige/brown
+   palette without introducing a jarring bright green. On hover the icon
+   inherits the standard --color-hover (dark brown) like every other card.
+   ─────────────────────────────────────────────────────────────────────── */
+.social-card--whatsapp .social-card__icon-wrap svg {
+  fill: #5D9B77;
+  /* muted sage-green — WhatsApp-recognisable but palette-safe */
+}
+
+.social-card--whatsapp:hover .social-card__icon-wrap svg {
+  fill: var(--color-hover);
+  /* reverts to standard dark-brown on hover */
+}
+
 /* ============================================================
    REDUCED MOTION SUPPORT
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
